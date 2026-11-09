@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "A lattice workflow microtest: Z2 / Z2"
+abstract: >-
+  A bounded proposal-and-check workflow: an AI model proposes heterotic shift
+  data for a G = K = Z2 test case, and exact deterministic code checks it.
+type: software
+authors:
+  - family-names: Cabrera
+    given-names: Lucía
+    affiliation: Instituto Balseiro
+repository-code: "https://github.com/S4815162342/z2-workflow-demo"
+keywords:
+  - M-theory
+  - heterotic string
+  - G2 orbifolds
+  - lattice
+  - exact verification
+  - LLM-assisted research

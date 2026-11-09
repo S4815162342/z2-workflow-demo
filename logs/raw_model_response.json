@@ -1,0 +1,27 @@
+{
+  "V": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "1/4",
+    "1/4"
+  ],
+  "delta": [
+    "1/4",
+    "1/4",
+    "0",
+    "1/2"
+  ],
+  "N": 4,
+  "phi": [
+    "1/2",
+    "1/2",
+    "0"
+  ],
+  "reasoning": "V is parallel to e7+e8. Its pairing with ±(e7+e8) is ±1/2, giving phase -1; its pairing with every other specified A1 root is zero, giving phase +1. Because its first six coordinates vanish, nV can belong to E8 only through the integral-coordinate sector, requiring 4|n; 4V=(0,0,0,0,0,0,1,1) has even coordinate sum. Thus V has order 4 modulo E8. With a=b=1, 4delta=(1,1,0,2) is integral. The benchmark gives q_gauge=-1/8, q(delta)=1/8, sum(phi_i^2)=1/2, and N^2 times their specified combination equals -8, an integer multiple of 2N=8. Multiplying the scalar parities (+1,-1,-1) by the selected gauge phases gives (-1,+1,+1) on one A1 and (+1,-1,-1) on the other fifteen, conditionally realizing the requested local branch pattern.",
+  "limitations": "This satisfies only the supplied arithmetic benchmark and conditional local parity assignment. A complete physical construction requires the full even self-dual Narain lattice and embeddings, an action on the entire lattice, identification of gauge A1 factors with the sixteen geometric components, and consistent operator lifts including cocycles, fermion phases, and group closure. In particular, the order-four gauge shift must be reconciled with the stated geometric Z2 actions. All twisted sectors require level-matching and modular-invariance checks, followed by the projected massless spectrum, charges, interactions, anomaly conditions, and verification of the claimed Higgs/Coulomb branches. No complete heterotic dual is independently verified."
+}
+

@@ -1,0 +1,2 @@
+# Optional interactive notebook interface. The checker itself has no dependencies.
+jupyterlab>=4,<5

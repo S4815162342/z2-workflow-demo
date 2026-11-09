@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-31",
+  "run_id": "z2-demo-proposal-001",
+  "model": "Codex session agent; exact deployed model/version identifier not exposed by this environment",
+  "agent_task": "demo_candidate_proposal",
+  "context": "Fresh agent context; instructed not to inspect workspace, prior artifacts, other agents or internet. Returned response without tool calls.",
+  "prompt": "generation_prompt.txt",
+  "response": "raw_model_response.json",
+  "reproduction_level": "Inputs and deterministic verified outputs; model text is archived, not guaranteed to regenerate identically.",
+  "records": [
+    {
+      "step": "Input specification",
+      "source": "User-approved conditional example; source geometry and branch targets",
+      "human_scientific_signoff": "Pending explicit review in HUMAN_REVIEW.md"
+    },
+    {
+      "step": "Numeric proposal",
+      "model_assisted": true,
+      "changes_to_numeric_fields": false,
+      "acceptance": "All nine implemented deterministic checks PASS; complete construction UNRESOLVED. Independent human acceptance pending.",
+      "accepted_uncorrected_by_checker": true,
+      "check_output": "proposal_checks.json"
+    },
+    {
+      "step": "Local field interpretation",
+      "model_assisted": true,
+      "accepted_uncorrected": false,
+      "reviewer": "Assistant review",
+      "issue": "The last reasoning sentence describes (-1,+1,+1) as applying to one A1. Those scalar signs apply to its two charged root generators, not its Cartan generator.",
+      "correction": "In the selected A1, gauge adjoint parities are (+1,-1,-1) in a Cartan/root eigenbasis. Cartan scalar parities are (+1,-1,-1); each charged generator has (-1,+1,+1). The invariant scalar dimensions are therefore (1,2,2), giving (46,2,2) across all sixteen factors.",
+      "severity": "Explanatory precision; V, delta, N and phi unchanged"
+    },
+    {
+      "step": "Adversarial validation",
+      "origin": "Four intentionally seeded invalid fixtures, not organically generated model errors",
+      "acceptance": "Expected FAIL diagnostics must be asserted by test_checker.py"
+    },
+    {
+      "step": "Implementation audit",
+      "reviewer": "Separate assistant review",
+      "result": "No critical scientific or implementation issues found. One malformed-runner edge corrected and regression-tested.",
+      "unit_tests_passed": 16,
+      "human_review": false
+    },
+    {
+      "step": "Physical interpretation and independent reproduction",
+      "status": "PENDING",
+      "reason": "No independent human audit or external reproduction is claimed."
+    }
+  ]
+}

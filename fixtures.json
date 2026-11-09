@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "description": "Two scoped reference examples and four explicitly seeded invalid inputs. These are check fixtures, not six physical models.",
+  "cases": [
+    {
+      "id": "one_higgs_reference",
+      "label": "One Higgs-type component and fifteen Coulomb-type components",
+      "role": "reference",
+      "seeded_invalid": false,
+      "geometry_action": "all_fixed",
+      "target": {"fixed_components": 16, "exchanged_pairs": 0, "higgs_indices_zero_based": [6]},
+      "N": 4,
+      "V": ["0", "0", "0", "0", "0", "0", "1/4", "1/4"],
+      "delta": ["1/4", "1/4", "0", "1/2"],
+      "phi": ["1/2", "1/2", "0"],
+      "physical_background": null
+    },
+    {
+      "id": "all_coulomb_control",
+      "label": "Sixteen Coulomb-type components",
+      "role": "reference",
+      "seeded_invalid": false,
+      "geometry_action": "all_fixed",
+      "target": {"fixed_components": 16, "exchanged_pairs": 0, "higgs_indices_zero_based": []},
+      "N": 2,
+      "V": ["0", "0", "0", "0", "0", "0", "0", "0"],
+      "delta": ["1/2", "1/2", "0", "1/2"],
+      "phi": ["1/2", "1/2", "0"],
+      "physical_background": null
+    },
+    {
+      "id": "seeded_geometry_mismatch",
+      "label": "Translated K action incorrectly assigned to the all-fixed target",
+      "role": "adversarial_fixture",
+      "seeded_invalid": true,
+      "geometry_action": "translation_i_over_2",
+      "target": {"fixed_components": 16, "exchanged_pairs": 0, "higgs_indices_zero_based": [6]},
+      "N": 4,
+      "V": ["0", "0", "0", "0", "0", "0", "1/4", "1/4"],
+      "delta": ["1/4", "1/4", "0", "1/2"],
+      "phi": ["1/2", "1/2", "0"],
+      "physical_background": null
+    },
+    {
+      "id": "seeded_wrong_order",
+      "label": "Order two incorrectly inferred from the local root action",
+      "role": "adversarial_fixture",
+      "seeded_invalid": true,
+      "geometry_action": "all_fixed",
+      "target": {"fixed_components": 16, "exchanged_pairs": 0, "higgs_indices_zero_based": [6]},
+      "N": 2,
+      "V": ["0", "0", "0", "0", "0", "0", "1/4", "1/4"],
+      "delta": ["1/4", "1/4", "0", "1/2"],
+      "phi": ["1/2", "1/2", "0"],
+      "physical_background": null
+    },
+    {
+      "id": "seeded_lattice_failure",
+      "label": "Integral gauge coordinates incorrectly assumed to imply E8 membership",
+      "role": "adversarial_fixture",
+      "seeded_invalid": true,
+      "geometry_action": "all_fixed",
+      "target": {"fixed_components": 16, "exchanged_pairs": 0, "higgs_indices_zero_based": [6]},
+      "N": 4,
+      "V": ["1/4", "0", "0", "0", "0", "0", "0", "0"],
+      "delta": ["1/4", "1/4", "0", "1/2"],
+      "phi": ["1/2", "1/2", "0"],
+      "physical_background": null
+    },
+    {
+      "id": "seeded_level_matching_failure",
+      "label": "Compensating torus shift fails the frozen congruence",
+      "role": "adversarial_fixture",
+      "seeded_invalid": true,
+      "geometry_action": "all_fixed",
+      "target": {"fixed_components": 16, "exchanged_pairs": 0, "higgs_indices_zero_based": [6]},
+      "N": 4,
+      "V": ["0", "0", "0", "0", "0", "0", "1/4", "1/4"],
+      "delta": ["1/4", "3/4", "0", "1/2"],
+      "phi": ["1/2", "1/2", "0"],
+      "physical_background": null
+    }
+  ]
+}

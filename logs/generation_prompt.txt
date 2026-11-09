@@ -1,0 +1,10 @@
+Produce one candidate for a bounded lattice-arithmetic workflow demonstration. Work only from this prompt; do not inspect workspace files, prior artifacts, other agents, or the internet. You may calculate directly. This is a conditional construction, not a request to certify a complete heterotic dual.
+
+Geometric input: G=K=Z2, g(z1,z2)=(-z1,-z2), K(z1,z2)=(-z1,z2), external action (y1,y2,y3)->(y1+1/2,-y2,-y3). Sixteen fixed A1 components. Local branch target: one Higgs-type and fifteen Coulomb-type components; internal scalar parities (+1,-1,-1).
+
+Abstract gauge input: E8={x in Z^8 or (Z+1/2)^8 with even integral coordinate sum}. Use the orthogonal A1^8 roots e1±e2,e3±e4,e5±e6,e7±e8, with another A1^8 untouched. Find a rational gauge shift V whose positive-Euclidean-pairing phases exp(2pi i r·V) are -1 on ±(e7+e8) and +1 on the other seven root pairs. Restrict V to be parallel to e7+e8, with coordinates in (1/4)Z modulo E8. Determine its order modulo E8 by checking the smallest n with nV in E8; do not infer this order only from the selected roots.
+
+Conditional torus input: U⊕U has bilinear Gram blocks [[0,1],[1,0]], so q(delta)=2x*y+2u*v. Take delta=(a/N,b/N;0,1/2), with a,b integers in [0,N-1], and require Ndelta integral. For this benchmark only, use q_gauge(V)=-sum(V_i^2), phi=(1/2,1/2,0), and require N^2*(q_gauge(V)+q(delta)-sum(phi_i^2)) to be an integer multiple of 2N. Choose one representative satisfying these inputs.
+
+Return a single JSON object with keys V (8 rational strings), delta (4 rational strings), N (integer), phi (3 rational strings), reasoning (short string), and limitations (short string). Explain which lattice/operator/spectrum data would still be needed for a complete physical construction. Do not claim an independently verified dual. Return only the JSON.
+

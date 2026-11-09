@@ -1,0 +1,216 @@
+{
+  "checks": [
+    {
+      "evidence": {
+        "claimed": {
+          "exchanged_pairs": 0,
+          "fixed_components": 16
+        },
+        "computed": {
+          "exchanged_pairs": 0,
+          "fixed_components": 16
+        }
+      },
+      "name": "geometry_target",
+      "scope": "Permutation of the sixteen K3 orbifold singular points",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "N_V": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "coordinate_sum": "2",
+        "in_E8": true
+      },
+      "name": "gauge_lattice_membership",
+      "scope": "The declared E8 gauge factor",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "N_delta": [
+          "1",
+          "1",
+          "0",
+          "2"
+        ],
+        "integral": true
+      },
+      "name": "torus_lattice_membership",
+      "scope": "The declared U plus U integral basis",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "computed_combined_order": 4,
+        "declared_N": 4,
+        "factor_orders": {
+          "gauge": 4,
+          "right_twist": 2,
+          "torus_shift": 4
+        }
+      },
+      "name": "declared_shift_order",
+      "scope": "Orders modulo the declared lattices; this is not the full vertex-operator lift",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "external_coordinates": [
+          "0",
+          "1/2"
+        ],
+        "norm": "0",
+        "order_mod_Z2": 2
+      },
+      "name": "external_translation",
+      "scope": "The fixed null order-two half-translation of this ansatz",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "frozen_phi": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "supplied_phi": [
+          "1/2",
+          "1/2",
+          "0"
+        ]
+      },
+      "name": "right_twist_assignment",
+      "scope": "The fixed right-moving twist representative of this arithmetic example",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "computed_positive_root_phases_mod_1": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "order_two_on_selected_roots": true,
+        "target_positive_root_phases_mod_1": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "name": "local_root_action",
+      "scope": "Abstract A1^8 plus A1^8 subsystem; the second E8 factor is untouched",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "computed_scalar_dimensions": [
+          46,
+          2,
+          2
+        ],
+        "computed_vector_dimension": 46,
+        "target_origin_algebra": {
+          "su2_factors": 15,
+          "u1_factors": 1
+        },
+        "target_scalar_dimensions": [
+          46,
+          2,
+          2
+        ],
+        "target_vector_dimension": 46
+      },
+      "name": "local_projected_dimensions",
+      "scope": "Linear local ADE field projection; not the complete heterotic spectrum",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "N2_qV": "-2",
+        "N2_qdelta": "2",
+        "N2_qphi": "8",
+        "congruence_value": "-8",
+        "modulus": 8,
+        "qV": "-1/8",
+        "qdelta": "1/8",
+        "qphi": "1/2",
+        "residue": "0"
+      },
+      "name": "level_matching",
+      "scope": "The single written level-matching congruence in the frozen conventions",
+      "status": "PASS"
+    },
+    {
+      "evidence": {
+        "reason": "No full background was supplied",
+        "required": "Integral Narain basis, Gram form, gluing, moduli/Wilson lines and actual enhanced roots"
+      },
+      "name": "narain_embedding",
+      "scope": "Complete heterotic construction",
+      "status": "UNRESOLVED"
+    },
+    {
+      "evidence": {
+        "reason": "No vertex-operator lift or all-sector consistency calculation is implemented",
+        "required": "Cocycles/phases and consistency of all powers and sectors"
+      },
+      "name": "operator_lift",
+      "scope": "Complete heterotic construction",
+      "status": "UNRESOLVED"
+    },
+    {
+      "evidence": {
+        "reason": "Local subsystem phases and one congruence do not determine full massless spectrum",
+        "required": "Full P dot (V+delta), twisted and bulk states, and the branch dictionary"
+      },
+      "name": "complete_spectrum_branch_match",
+      "scope": "Complete heterotic construction",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "diagnostics": {
+    "interpretation": "Different ambient root sets give different invariants. This is not the physical Narain spectrum.",
+    "roots_retained_by_V_on_unbroken_E8": 126,
+    "roots_retained_in_first_A1_8_subsystem": 14,
+    "unbroken_E8_root_count": 240
+  },
+  "execution_status": "OK",
+  "id": "logged_model_proposal",
+  "overall_status": "UNRESOLVED",
+  "scoped_status": "PASS"
+}

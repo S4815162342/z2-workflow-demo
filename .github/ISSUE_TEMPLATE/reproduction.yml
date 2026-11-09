@@ -1,0 +1,101 @@
+name: Reproduction report
+description: Report an independent rerun of the checker, tests and proposal check.
+title: "Reproduction: <OS>, Python <version>"
+labels: ["reproduction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for rerunning the workflow. Please follow the **Run** section of the README
+        (`python3 checker.py`, `python3 -m unittest -v`, `python3 verify_proposal.py`) and fill in the fields below.
+        A reproduction of the computations is valuable on its own; say clearly whether you also reviewed the physics.
+
+  - type: input
+    id: version
+    attributes:
+      label: Version reproduced
+      description: The git commit SHA you checked out, or the bundle archive's SHA-256 hash.
+      placeholder: e.g. f55a604 or sha256 of z2_workflow_demo.zip
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: output of `python3 --version`
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: e.g. Ubuntu 22.04, macOS 15, Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands used
+      render: shell
+      value: |
+        python3 checker.py
+        python3 -m unittest -v
+        python3 verify_proposal.py
+    validations:
+      required: true
+
+  - type: textarea
+    id: test-output
+    attributes:
+      label: Test and checker output
+      description: Paste the full output of the commands above.
+      render: text
+    validations:
+      required: true
+
+  - type: input
+    id: results-hash
+    attributes:
+      label: SHA-256 of the regenerated results.json
+      placeholder: output of `sha256sum results.json`
+    validations:
+      required: true
+
+  - type: dropdown
+    id: instructions-only
+    attributes:
+      label: Did you use only the instructions in this repository?
+      options:
+        - "Yes"
+        - "No (explain below)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: changes
+    attributes:
+      label: Were any changes to the code or inputs necessary?
+      options:
+        - "No"
+        - "Yes (describe below)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope of your review
+      options:
+        - I only reproduced the computations
+        - I reproduced the computations and reviewed the physics assumptions
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Deviations, required changes, physics comments, or anything else.

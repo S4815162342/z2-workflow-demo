@@ -1,0 +1,268 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0pt,left=51mm,right=15mm,top=37mm,bottom=18mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{DemoSans-Regular.ttf}[Path=fonts/,BoldFont=DemoSans-Bold.ttf,ItalicFont=DemoSans-Italic.ttf]
+\setsansfont{DemoSans-Regular.ttf}[Path=fonts/,BoldFont=DemoSans-Bold.ttf,ItalicFont=DemoSans-Italic.ttf]
+\setmonofont{lmmono10-regular.otf}[BoldFont=lmmonolt10-bold.otf,ItalicFont=lmmono10-italic.otf,Scale=0.91]
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,enumitem,xcolor,tikz,eso-pic,hyperref}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdftitle={A lattice workflow microtest: Z2/Z2},pdfauthor={Lucia Cabrera},pdfsubject={Bounded LLM-assisted proposal and exact verification; version 1.0.0}}
+\definecolor{headerblack}{HTML}{191919}
+\definecolor{sidebargray}{HTML}{404040}
+\definecolor{accent}{HTML}{E1592E}
+\definecolor{cyanaccent}{HTML}{2EB6E1}
+\definecolor{bodyink}{HTML}{292929}
+\definecolor{muted}{HTML}{666666}
+\definecolor{pale}{HTML}{F2F2F2}
+\color{bodyink}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6.5pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.23}
+\setlist[itemize]{leftmargin=1.2em,itemsep=3pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.5em,itemsep=4pt,topsep=3pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\uu}{\mathfrak u}
+\newcommand{\N}{\mathcal N}
+\newcommand{\sect}[1]{\vspace{7pt}{\fontsize{15}{18}\selectfont #1}\par\vspace{-4pt}{\color{bodyink}\rule{\linewidth}{0.35pt}}\par\vspace{-3pt}}
+\newcommand{\subsect}[1]{\vspace{4pt}{\bfseries #1}\par\vspace{-3pt}}
+\newcommand{\note}[1]{\par\vspace{4pt}\noindent\colorbox{pale}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\small #1}}\par\vspace{4pt}}
+\newcommand{\status}[1]{\texttt{\bfseries #1}}
+\newcommand{\pagekey}{01}
+\newcommand{\pagelabel}{The example}
+\newcommand{\pagesummary}{One geometric target.\par One proposed representative.\par Exact, bounded checks.}
+\AddToShipoutPictureBG{\begin{tikzpicture}[remember picture,overlay]
+\fill[headerblack] (current page.north west) rectangle ([yshift=-26mm]current page.north east);
+\fill[sidebargray] ([yshift=-26mm]current page.north west) rectangle ([xshift=37mm]current page.south west);
+\node[anchor=north west,text=white,font=\fontsize{18}{21}\selectfont] at ([xshift=12mm,yshift=-6mm]current page.north west) {A lattice workflow microtest};
+\node[anchor=north west,text=white,font=\small] at ([xshift=12mm,yshift=-17mm]current page.north west) {Luc\'ia \textbf{Cabrera}\quad\textcolor{cyanaccent}{/}\quad Workflow microtest\quad\textcolor{cyanaccent}{/}\quad 31 October 2026};
+\node[anchor=north west,text=white,font=\fontsize{27}{29}\selectfont] at ([xshift=7mm,yshift=-40mm]current page.north west) {\pagekey};
+\node[anchor=north west,fill=accent,text=white,text width=25mm,inner sep=2mm,font=\small\bfseries] at ([xshift=5mm,yshift=-56mm]current page.north west) {\pagelabel};
+\node[anchor=north west,text=white,text width=24mm,font=\small,align=left] at ([xshift=7mm,yshift=-78mm]current page.north west) {\raggedright\hyphenpenalty=10000 \pagesummary};
+\draw[cyanaccent,line width=1.4pt] ([xshift=7mm,yshift=-132mm]current page.north west) -- ++(21mm,0);
+\node[anchor=north west,text=white,text width=24mm,font=\footnotesize,align=left] at ([xshift=7mm,yshift=-139mm]current page.north west) {\(G=K=\Z_2\)\par\vspace{5pt}Exact rational arithmetic\par\vspace{5pt}Six sample inputs};
+\node[anchor=south west,text=muted,font=\footnotesize] at ([xshift=51mm,yshift=8mm]current page.south west) {Luc\'ia Cabrera\quad /\quad Workflow example v1.0.0};
+\node[anchor=south east,text=muted,font=\footnotesize] at ([xshift=-15mm,yshift=8mm]current page.south east) {\thepage\ /\ 6};
+\end{tikzpicture}}
+\begin{document}
+\fontsize{10.2}{13.1}\selectfont
+\sect{A bounded proposal-and-check cycle}
+This demonstration connects a specified M-theory target to an LLM-proposed lattice representative and deterministic checks. It exercises the early stages of a dual-building workflow: geometric input, local action, lattice membership, order and a written level-matching condition.
+
+\note{\textbf{Executed result.} Two reference samples pass the implemented checks; four deliberately invalid samples fail. The proposed representative remains \status{UNRESOLVED} as a complete heterotic dual. The full Narain embedding and spectrum are outside this calculation.}
+
+\sect{Fix the geometric input}
+Write the singular space as
+\[
+X_0=\bigl(T^3\times(T^4/G)\bigr)/K,\qquad G=K=\Z_2,
+\]
+with \(g(z^1,z^2)=(-z^1,-z^2)\) on the square four-torus. Its sixteen singular points are labelled by
+\[
+z^1=(a+ib)/2,\quad z^2=(c+id)/2,\quad(a,b,c,d)\in\mathbb F_2^4.
+\]
+The three actions considered for \(K=\Z_2\) give the following independently enumerated orbits:
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}Yrr@{}}\toprule
+\textbf{Action on \((z^1,z^2)\)}&\textbf{Fixed}&\textbf{Pairs}\\\midrule
+\((-z^1,z^2)\)&16&0\\
+\((-z^1,z^2+i/2)\)&0&8\\
+\((-z^2,-z^1)\)&4&6\\\bottomrule
+\end{tabularx}
+\end{center}
+The selected target is the \textbf{first row}: sixteen components of type \((A_1,T^3/\Z_2)\). The external action is fixed as
+\[
+(y^1,y^2,y^3)\longmapsto(y^1+\tfrac12,-y^2,-y^3).
+\]
+Choose one Higgs-type component and fifteen Coulomb-type components. The all-Coulomb assignment is a simple control within this same geometry. The other two rows only test geometric input handling.
+
+\subsect{The demonstrated workflow}
+\begin{enumerate}
+\item Freeze the geometry, local target and arithmetic conventions.
+\item Ask a model for one representative, with its reasoning archived.
+\item Evaluate the proposal and seeded counterexamples with exact code.
+\item Review the evidence and retain unresolved physical checks explicitly.
+\end{enumerate}
+
+\newpage
+\renewcommand{\pagekey}{02}\renewcommand{\pagelabel}{Local action}
+\renewcommand{\pagesummary}{Order on roots.\par Order in the lattice.\par Check both.}
+\sect{The local branch target}
+For one Higgs-type \(A_1\), the local target uses the Weyl representative
+\[
+w=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad w^2=-I.
+\]
+Conjugation on a basis of \(\mathfrak{sl}_2(\mathbb C)\) has eigenvalues \((+1,-1,-1)\). The code verifies these eigenvalues and all nine basis-bracket preservation identities. Thus this matrix has order four, while its adjoint action has order two.
+
+The scalar directions have geometric parities \((+1,-1,-1)\). In a conjugate Cartan/root basis the invariant Cartan generator contributes scalar parities \((+1,-1,-1)\); each of the two odd charged generators contributes \((-1,+1,+1)\). One Higgs-type component therefore has complex dimensions \((1,2,2)\) in the three local chiral scalar sectors.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}Ycc@{}}\toprule
+&\textbf{16 Coulomb}&\textbf{15 Coulomb + 1 Higgs}\\\midrule
+Local algebra at origin&\(\su(2)^{16}\)&\(\su(2)^{15}\oplus\uu(1)\)\\
+Gauge generators&48&46\\
+Complex scalar dimensions&\((48,0,0)\)&\((46,2,2)\)\\\bottomrule
+\end{tabularx}
+\end{center}
+The intended interpretation of the Higgs component is an \(\N=2\), \(SO(2)\) gauge theory with a hypermultiplet in its two-dimensional vector representation. Its generic Higgs branch leaves two complex moduli. This is the \emph{local target}; the demo does not derive the complete heterotic matter spectrum.
+
+\sect{An abstract lattice representative}
+Use orthogonal roots
+\[
+\alpha_{j,\pm}=e_{2j-1}\pm e_{2j},\quad j=1,\ldots,4,
+\qquad V=\tfrac14(e_7+e_8).
+\]
+Pair root characters with \(V\) using the positive Euclidean coordinates. Then \(\exp(2\pi i\,\alpha\cdot V)=-1\) for \(\alpha=\pm(e_7+e_8)\), and it is \(+1\) on the other seven root pairs. Cartan generators remain even. A second abstract \(A_1^8\) is untouched.
+
+Here
+\[
+E_8=\{x\in\Z^8\ \text{or}\ (\Z+\tfrac12)^8:\ \sum_i x_i\in2\Z\}.
+\]
+Consequently \(4V=(0^6,1,1)\in E_8\), while \(2V=(0^6,\tfrac12,\tfrac12)\notin E_8\). The order modulo this lattice is four, despite the order-two action on the chosen root subsystem.
+
+\note{The ambient root set matters. On all 240 roots of an unbroken \(E_8\), this \(V\) retains 126 roots; on the chosen \(A_1^8\), it retains 14 roots. The subsystem calculation alone does not construct the required enhanced Narain background.}
+
+\newpage
+\renewcommand{\pagekey}{03}\renewcommand{\pagelabel}{Exact checks}
+\renewcommand{\pagesummary}{A fixed metric.\par A small ansatz.\par An exact scan.}
+\sect{Freeze the arithmetic conventions}
+For this conditional example, take a gauge norm \(q_V=-\sum_i V_i^2\) and two hyperbolic planes \(U\oplus U\), each with Gram matrix
+\[
+U=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+q(x,y;u,v)=2xy+2uv.
+\]
+The negative gauge norm belongs to the written arithmetic convention. Root characters on page 2 were defined with the positive Euclidean pairing. These conventions are fixed inputs; they are not silently interchanged.
+
+Set \(\phi=(\tfrac12,\tfrac12,0)\), so \(\phi^2=\tfrac12\). The scalar directions on page 2 list the invariant direction first; this is a relabelling of the twist planes. Test the written congruence
+\[
+N^2\bigl(q_V+q_\delta-\phi^2\bigr)\in2N\Z.
+\]
+This is a check of the stated level-matching formula, not a certificate of modular invariance of a complete asymmetric orbifold.
+
+\sect{One Higgs-type component: \(N=4\)}
+Restrict the torus shift to
+\[
+\delta=\left(\frac a4,\frac b4;0,\frac12\right),
+\qquad a,b\in\{0,1,2,3\}.
+\]
+The external half-shift is null and has order two in the declared \(U\) basis. The three contributions are
+\[
+N^2q_V=-2,\qquad N^2q_\delta=2ab,\qquad N^2\phi^2=8.
+\]
+Thus
+\[
+-2+2ab-8\equiv0\pmod8
+\quad\Longleftrightarrow\quad ab\equiv1\pmod4.
+\]
+All sixteen pairs are checked. Exactly \((a,b)=(1,1)\) and \((3,3)\) satisfy this congruence. The model proposed
+\[
+\boxed{V=(0^6,\tfrac14,\tfrac14),\qquad
+\delta=(\tfrac14,\tfrac14;0,\tfrac12),\qquad N=4.}
+\]
+For this representative \(q_\delta=1/8\), \(4\delta=(1,1,0,2)\) is integral, and the congruence value is \(-8\), with residue zero modulo eight.
+
+\subsect{All-Coulomb control}
+Take \(V=0\), \(N=2\), and \(\delta=(a/2,b/2;0,1/2)\). The condition becomes \(2ab-2\equiv0\pmod4\). Of four pairs, only \((1,1)\) passes. This gives \(\delta=(1/2,1/2;0,1/2)\).
+
+\note{The counts are raw representatives in the fixed ansatz. They are not counts of inequivalent backgrounds. Compatibility with the actual invariant lattice, gluing and operator action remains to be established.}
+
+\newpage
+\renewcommand{\pagekey}{04}\renewcommand{\pagelabel}{Sample suite}
+\renewcommand{\pagesummary}{Two reference samples.\par Four planted errors.\par Specific checks.}
+\sect{Six inputs, evaluated as data}
+The checker reads candidate fields from \texttt{fixtures.json}; it computes evidence from the supplied vectors and target. Expected outcomes are tested separately from the evaluator. Both reference samples pass nine implemented checks, while three complete-construction checks remain unresolved.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{28mm}Y>{\raggedright\arraybackslash}p{20mm}@{}}\toprule
+\textbf{Sample}&\textbf{Targeted diagnostic}&\textbf{Result}\\\midrule
+One Higgs&\(4V\in E_8\), order four; 46 gauge generators, complex scalar dimensions \((46,2,2)\); residue zero.&\status{PASS}\\[3pt]
+All Coulomb&\(V=0\), combined order two; 48 gauge generators, complex scalar dimensions \((48,0,0)\); residue zero.&\status{PASS}\\[3pt]
+Wrong geometry&Use \((-z^1,z^2+i/2)\) while claiming sixteen fixed components. Computation finds zero fixed components and eight pairs.&\status{FAIL}\\[3pt]
+Wrong order&Declare \(N=2\) for the one-Higgs vectors. In particular, \(2V\notin E_8\); the combined arithmetic order is four.&\status{FAIL}\\[3pt]
+Invalid lattice vector&Replace \(V\) by \(e_1/4\), keeping \(N=4\). Then \(4V=e_1\notin E_8\): the integral coordinate sum is odd.&\status{FAIL}\\[3pt]
+Wrong torus shift&Set \(\delta=(1/4,3/4;0,1/2)\). The congruence value is \(-4\), with residue four modulo eight.&\status{FAIL}\\\bottomrule
+\end{tabularx}
+\end{center}
+All four negative samples are \textbf{deliberately seeded}. Some violate several checks; the table identifies the intended diagnostic without claiming that each mutation isolates a single failure.
+
+\sect{What the statuses mean}
+\begin{itemize}
+\item \status{PASS}: the supplied data satisfy the named implemented check.
+\item \status{FAIL}: the data contradict that check or their declared target. This rejects this submitted construction under these conventions; it is not a general obstruction to a dual.
+\item \status{UNRESOLVED}: the required physical data or calculation is absent. This is never promoted to a pass.
+\end{itemize}
+Malformed data are recorded separately as an execution \texttt{ERROR}, with no scientific pass/fail verdict. The two reference samples have overall status \status{UNRESOLVED}; the four invalid samples have overall status \status{FAIL}.
+
+\note{\textbf{Validation:} 16 automated tests pass. They include reference orbit counts, an explicit-multiple oracle for lattice order, a separately derived \(ab\equiv1\pmod4\) reference, input mutations and malformed-input handling. The suite reports zero execution errors for the six intended samples.}
+
+\newpage
+\renewcommand{\pagekey}{05}\renewcommand{\pagelabel}{Model review}
+\renewcommand{\pagesummary}{Save the proposal.\par Check each value.\par Log the review.}
+\sect{An actual model proposal}
+A fresh agent received the geometric input, the orthogonal root frame, the requested local phases and the conditional torus ansatz. Its prompt did not contain the expected \(V\), the value of \(N\), the successful \(\delta\), or the reference scan output. It was instructed not to inspect prior artifacts or other agents.
+
+The returned numerical proposal is the boxed representative on page 3. Evaluating its actual fields gives \status{PASS} for the nine implemented checks and \status{UNRESOLVED} for the complete construction. No numerical field was changed.
+
+The archived reasoning needed one clarification. It described scalar signs \((-1,+1,+1)\) as applying ``on one \(A_1\).'' These signs apply to the two charged generators. The Cartan generator has scalar signs \((+1,-1,-1)\), so the full invariant dimensions are \((1,2,2)\). The report and checker state this explicitly.
+
+\note{This clarification was made during assistant review. It is not presented as an independently completed human check. The four adversarial fixtures are separate seeded errors, not mistakes attributed to the proposing model.}
+
+\subsect{The audit trail}
+\begin{itemize}
+\item \texttt{logs/generation\_prompt.txt}: the exact proposal prompt.
+\item \texttt{logs/raw\_model\_response.json}: the unchanged response.
+\item \texttt{logs/review\_log.json}: provenance, correction and review status.
+\item \texttt{logs/proposal\_checks.json}: computed checks on the logged proposal.
+\end{itemize}
+The run used a Codex session agent. The execution environment did not expose its exact model/version identifier; that provenance field is recorded as unavailable. The prompt, response and checked numerical outputs are preserved in full.
+
+\sect{Reproduce the computation}
+From the repository root (or an extracted archive):
+\begin{quote}\ttfamily\small
+python3 checker.py\par
+python3 -m unittest -v\par
+python3 verify\_proposal.py
+\end{quote}
+The checker uses Python's standard library and exact \texttt{Fraction} arithmetic. It refuses floating-point candidate inputs. The notebook \texttt{demo.ipynb} explains the same calculation; Jupyter is optional for the command-line run.
+
+The machine-readable output is deterministic. Reproduction of the numerical evidence does not require a model call or regeneration of the model's prose. The README includes a reporting format for an external reproduction; none is claimed in this release.
+
+\subsect{Rebuild this report}
+Run \texttt{bash compile\_report.sh} with XeLaTeX installed. The repository includes the complete LaTeX source and the required display fonts, with their licence. \texttt{VALIDATION.md} records the tested environment and reproduction results.
+
+\newpage
+\renewcommand{\pagekey}{06}\renewcommand{\pagelabel}{Scope and credits}
+\renewcommand{\pagesummary}{Trace each result.\par Keep open checks.\par Rerun the suite.}
+\sect{The physical review boundary}
+The demo establishes geometric orbit counts, an abstract local field projection, lattice membership and arithmetic order in the stated factors, and one written level-matching congruence. It does not establish a complete dual pair.
+
+For a complete construction, the actual massless Narain vectors \(P\) must be specified. They may have toroidal momentum, winding or Wilson-line components. Their full characters involve
+\[
+\exp\bigl(2\pi i\,P\cdot(V+\delta)\bigr),
+\]
+with the pairing evaluated in the complete chosen lattice. The independent root-subsystem calculation and torus congruence cannot substitute for that check.
+
+\begin{enumerate}
+\item \textbf{Narain background:} integral basis, bilinear form, gluing, moduli, Wilson lines, enhanced roots and their identification with geometric components.
+\item \textbf{Operator action:} an action preserving the lattice, with a compatible lift, phases and cocycles. Its powers and every required sector must be consistent. Order four in the arithmetic representative must be reconciled with the geometric order-two action.
+\item \textbf{Physical matching:} untwisted, twisted and bulk states; matter representations; and the branch deformation dictionary.
+\end{enumerate}
+These three checks are explicitly \status{UNRESOLVED}, even if an input merely asserts that background data exist.
+
+\subsect{Validation and scientific review}
+The code, notebook, archived proposal and LaTeX build were rerun from a clean archive extraction. The numerical results were byte-identical. A separate assistant audit checked the implementation and mathematical scope. Independent human scientific validation is not claimed. \texttt{HUMAN\_REVIEW.md} lists the hand calculations and checks for a reader's audit.
+
+\sect{Authorship and attribution}
+\small
+This report and the accompanying repository were prepared by Luc\'ia Cabrera.
+
+The geometric targets, the local branch interpretation and the level-matching relation come from ongoing, unpublished work by Bobby Acharya, Daniel Baldwin, Luc\'ia Cabrera and Kumar Narain.
+
+All equations needed to run this bounded example are included here and in the input data.
+
+\note{\textbf{Release contents:} geometric inputs and declared conventions, exact checker, six fixtures, tests with separate reference calculations, executed notebook, archived model proposal and review record, reproduction playbook, and this PDF with its complete LaTeX source.}
+\end{document}
